@@ -9,4 +9,6 @@ const String adminHomeRoute = "admin-home";
 const String adminAnnounce = "admin-announce";
 const String adminProduct = "admin-products";
 const String adminProfile = "admin-profile";
+const String adminProductList = "admin-productlist";
+
 // const String registerRoute = "regist";

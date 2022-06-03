@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+
 // import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:labpract/application/auth/events/auth_events.dart';
@@ -19,15 +20,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<RegisterEvent>((event, emit) async {
       {
         emit(Registering());
-        // jsonEncode(object)
-        // jsonEncode(event.register);
-        // print(jsonEncode(event.register));
-        // print("nccccccccccckdssssssssss");
-        // print(event.register.email);
-        // print(event.register.username);
-
-        // print(event.register);
-
         bool res = await authRepository.signUp(event.register);
         print(res);
         if (res) {
@@ -59,19 +51,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         try {
           print('Logfgfgfdgfdging');
           print(event.login);
-          print(event.login.email);
+          print("email: ${event.login.email}");
           print(event.login.password);
-          Map res = await authRepository.signIn(
+          User user = await authRepository.signIn(
               event.login.email, event.login.password);
-          if (res["type"] == "admin") {
-            print("aaaaaaaaadddddddmmmiiiiiiiiiin");
-            emit(AdminLoginSuccess());
+          // currentUser = user;
+          if (AuthRepository.isadmin) {
+            print("admmmmmmmmmminnnnnnnnnnn");
+            emit(AdminLoginSuccess(user: user));
+            return;
           }
-          emit(LoginSuccess());
+          return emit(LoginSuccess(user: user));
         } catch (e) {
-          print(e);
           print("oooooooooooooooooooo");
-          emit(LogginError("Logiin failed:${e.toString()} }"));
+          emit(LogginError("Logiin failed:${e.toString()}"));
         }
       }
     });
