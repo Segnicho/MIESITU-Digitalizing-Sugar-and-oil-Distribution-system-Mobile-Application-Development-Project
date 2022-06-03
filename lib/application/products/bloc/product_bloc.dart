@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:labpract/admin/index.dart';
 import 'package:labpract/application/products/event/product_event.dart';
 import 'package:labpract/application/products/state/product_state.dart';
 import 'package:labpract/infra/products/repository/product_repository.dart';
@@ -25,8 +26,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         // bool res = await authRepository.signUp(event.register);
         // if (product !=null) {
         print("created successfuly");
-        emit(ProductLoadSuccess());
-        // return;
+        emit(ProductLoadSuccess(product));
+        // return;R
         // }
 
       } catch (_) {

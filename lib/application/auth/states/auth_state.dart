@@ -15,14 +15,14 @@ class LoggedOutState extends AuthState {}
 class LoggingIn extends AuthState {}
 
 class LoginSuccess extends AuthState {
-  // final User user;
+  final User user;
 
-  // LoginSuccess({required this.user});
+  LoginSuccess({required this.user});
 }
 
 class AdminLoginSuccess extends AuthState {
-  // final User user;
-  // AdminLoginSuccess({required this.user});
+  final User user;
+  AdminLoginSuccess({required this.user});
 }
 
 class LogginError extends AuthState {

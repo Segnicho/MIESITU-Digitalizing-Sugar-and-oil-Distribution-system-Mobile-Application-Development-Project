@@ -26,7 +26,6 @@ class ProductDetail extends StatelessWidget {
   final product_name = TextEditingController();
   final product_price = TextEditingController();
   // final titleCtrl = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

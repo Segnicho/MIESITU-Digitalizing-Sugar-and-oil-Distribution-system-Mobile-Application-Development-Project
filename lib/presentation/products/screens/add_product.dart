@@ -7,7 +7,7 @@ import 'package:labpract/domain/poducts/models/product.dart';
 import 'package:labpract/domain/poducts/product_model.dart';
 
 class AddProduct extends StatefulWidget {
-  AddProduct({Key? key}) : super(key: key);
+  const AddProduct({Key? key}) : super(key: key);
 
   @override
   State<AddProduct> createState() => _AddProductState();

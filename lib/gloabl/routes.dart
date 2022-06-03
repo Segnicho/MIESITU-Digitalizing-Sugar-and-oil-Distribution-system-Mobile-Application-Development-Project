@@ -1,32 +1,34 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:labpract/application/auth/bloc/auth_bloc.dart';
 import 'package:labpract/application/auth/states/auth_state.dart';
 import 'package:labpract/domain/announcement/announcement_model.dart';
 import 'package:labpract/domain/poducts/models/product.dart';
+import 'package:labpract/gloabl/admin_profile.dart';
 import 'package:labpract/gloabl/route_name_constants.dart';
 import 'package:labpract/gloabl/user_profile.dart';
-import 'package:labpract/presentation/adminhome.dart';
+import 'package:labpract/gloabl/adminhome.dart';
 import 'package:labpract/presentation/announcement/announce_admin.dart';
 import 'package:labpract/presentation/announcement/user_announcement.dart';
 import 'package:labpract/presentation/auth/Login_screen.dart';
 import 'package:labpract/presentation/auth/sign_up_page.dart';
+import 'package:labpract/presentation/products/screens/add_product.dart';
+import 'package:labpract/presentation/products/screens/product_view.dart';
 import 'package:labpract/presentation/products/screens/screens.dart';
-import 'package:labpract/presentation/userhome.dart';
+import 'package:labpract/gloabl/userhome.dart';
 
 class MiesituRouter {
-  // final AdminLoginSuccess adminLoginState;
-  // final LoginSuccess loginState;
-  // MiesituRouter(this.loginState, this.adminLoginState);
+  final AdminLoginSuccess adminLoginState;
+  final LoginSuccess loginState;
+  MiesituRouter(this.loginState, this.adminLoginState);
   // MiesituRouter();
 
-  static final router = GoRouter(
+  static final router =
+      GoRouter(initialLocation: '/login', redirect: (loginState) {},
 // refreshListenable: ,
 // refreshListenable : GoRouterRefreshStream(AuthBloc.stream),
 
-      routes: <GoRoute>[
+          routes: <GoRoute>[
         GoRoute(
             name: loginRoute,
             path: '/login',
@@ -35,7 +37,7 @@ class MiesituRouter {
             routes: <GoRoute>[
               GoRoute(
                   name: registerRoute,
-                  path: '/signup',
+                  path: 'signup',
                   pageBuilder: (context, state) =>
                       MaterialPage<void>(child: SignUp())),
             ]),
@@ -50,6 +52,11 @@ class MiesituRouter {
                   path: 'userannouncement',
                   pageBuilder: (context, state) =>
                       const MaterialPage<void>(child: UserAnnouncementPage())),
+              GoRoute(
+                  name: userProduct,
+                  path: 'userProduct',
+                  pageBuilder: (context, state) =>
+                      const MaterialPage<void>(child: ProductListScreen())),
               GoRoute(
                   name: userProfile,
                   path: 'userprofile',
@@ -67,32 +74,38 @@ class MiesituRouter {
             name: adminHomeRoute,
             path: '/adminHome',
             pageBuilder: (context, state) =>
-                MaterialPage<void>(child: AdminHome()),
+                const MaterialPage<void>(child: AdminHome()),
             routes: <GoRoute>[
               GoRoute(
                 name: adminAnnounce,
                 path: 'adminAnnounce',
                 pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: const AdminAnnounce()),
-              ),
-              GoRoute(
-                name: adminAnnounce,
-                path: 'adminAnnounce',
-                pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: const AdminAnnounce()),
+                    const MaterialPage<void>(child: AdminAnnounce()),
               ),
               GoRoute(
                 name: adminProfile,
                 path: 'adminProfile',
                 pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: const AdminAnnounce()),
+                    const MaterialPage<void>(child: AdminProfile()),
               ),
               GoRoute(
                 name: adminProduct,
                 path: 'adminProduct',
                 pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: AdminAnnounce()),
+                    const MaterialPage<void>(child: AdminProduct()),
               ),
+              GoRoute(
+                name: adminProductList,
+                path: 'adminProductList',
+                pageBuilder: (context, state) =>
+                    const MaterialPage<void>(child: AddProduct()),
+              ),
+              // GoRoute(
+              //   name: adminProduct,
+              //   path: 'adminProduct',
+              //   pageBuilder: (context, state) =>
+              //       const MaterialPage<void>(child: AdminAnnounce()),
+              // ),
             ]),
 
         // GoRoute(
@@ -155,9 +168,9 @@ class MiesituRouter {
 
         // )
       ]
-      // redirect: (state){
-      //   final isLogedin =
-      // }
+          // redirect: (state){
+          //   final isLogedin =
+          // }
 
-      );
+          );
 }

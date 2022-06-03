@@ -15,17 +15,6 @@ class LogoutEvent extends AuthEvent {
   LogoutEvent({required this.logout});
 }
 
-// class NextButtonPressed extends AuthEvent {
-//   final phone;
-//   final dialCode;
-//   NextButtonPressed(this.phone, this.dialCode);
-// }
-
-// class VerificationButtonPressed extends AuthEvent {
-//   final verificationCode;
-//   VerificationButtonPressed(this.verificationCode);
-// }
-
 class RegisterEvent extends AuthEvent {
   final Register register;
   Register get props => register;

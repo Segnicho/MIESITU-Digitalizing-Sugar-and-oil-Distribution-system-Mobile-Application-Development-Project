@@ -29,16 +29,6 @@ class Register extends Authentication {
   List<Object> get props =>
       [username, email, first_name, last_name, password, password2];
 
-  // factory Register.fromJson(Map<String, dynamic> json) {
-  //   return Register(
-  //       username: json['username'],
-  //       email: json['email'],
-  //       password: json['password'],
-  //       password2: json['password2'],
-  //       first_name: json['first_name'],
-  //       last_name: json['last_name']);
-  // }
-
   @override
   String toString() =>
       '{"username": "$username", "email": "$email", "password2": "$password2","password": "$password", "first_name":"$first_name", "last_name":"$last_name"}';
@@ -55,11 +45,12 @@ class Login extends Authentication {
 User? currentUser;
 
 class User extends Authentication {
-  final String id;
-
+  final String? id;
+  final String? type;
   final String username;
 
-  // final String token;
+  final String? accesstoken;
+  final String? token;
 
   final String email;
 
@@ -67,20 +58,24 @@ class User extends Authentication {
 
   // final String avatar;
 
-  final String password;
+  final String? password;
 
-  final String first_name;
+  final String? firstname;
 
-  final String last_name;
+  final String? lastname;
+  final String? refreshtoken;
 
   User({
-    required this.id,
+    this.type,
+    this.token,
+    this.id,
     required this.username,
-    // required this.token,
+    this.accesstoken,
     required this.email,
-    required this.password,
-    required this.first_name,
-    required this.last_name,
+    this.password,
+    this.firstname,
+    this.lastname,
+    this.refreshtoken,
   });
   //  :
 
@@ -89,13 +84,26 @@ class User extends Authentication {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['_id'],
-      username: json['username'],
-      // token: json['token'],
-      email: json['email'],
-      password: json['password'],
-      first_name: json['first_name'],
-      last_name: json['last_name'],
+      // id: json['id'],
+      type: json["type"],
+      refreshtoken: json["refreshtoken"],
+      token: json["token"],
+      accesstoken: json["accesstoken"],
+      username: json["username"],
+      firstname: json['"firstname"'],
+      lastname: json['"lastname"'],
+      email: json["email"],
+      password: json["password"],
     );
   }
+
+  Map<String, dynamic> toDBjson() => {
+        "accesstoken": accesstoken,
+        "refreshtoken": refreshtoken,
+        "firstname": firstname,
+        "type": type,
+        "lastname": lastname,
+        "username": username,
+        "email": email
+      };
 }

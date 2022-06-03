@@ -11,7 +11,10 @@ class _UserHomeState extends State<UserHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("User Home welcome")),
-    );
+
+        // appBar: AppBar(title: Text("User Home welcome")),
+        body: Center(
+      child: Text("Userhome"),
+    ));
   }
 }

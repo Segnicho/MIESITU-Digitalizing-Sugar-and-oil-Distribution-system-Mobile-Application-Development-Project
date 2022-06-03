@@ -2,7 +2,7 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:labpract/application/auth/bloc/auth_bloc.dart';
@@ -12,9 +12,10 @@ import 'package:labpract/domain/auth/entity/auth_model.dart';
 // ignore: import_of_legacy_library_into_null_safe
 // import 'package:labpract/globals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:labpract/presentation/adminhome.dart';
+import 'package:labpract/gloabl/route_name_constants.dart';
+// import 'package:labpract/gloabl/adminhome.dart';
 
-import 'package:labpract/presentation/auth/sign_up_page.dart';
+// import 'package:labpract/presentation/auth/sign_up_page.dart';
 // import 'package:easy_localization/easy_localization.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -297,13 +298,16 @@ class _LogInState extends State<LoginScreen> {
                               }
                             },
                             listener: (context, state) {
+                              print(state);
+                              // print("uuuuuuuuuuuuuuuuuuusr");
                               if (state is LoginSuccess) {
-                                print("userhomeGoing");
-                                context.goNamed('userhome');
+                                print("useeeeeeeeeeeeerhomeGoing");
+                                return context.goNamed(userHomeRoute,
+                                    extra: User);
                               }
                               if (state is AdminLoginSuccess) {
-                                print("adminhomeGoing");
-                                context.goNamed('adminhome');
+                                print("adminhomeeeeeeeeeeeeeeGoing");
+                                context.goNamed(adminHomeRoute);
 
                                 // GoRouter.of(context).push('/home');
                                 // final role = state.user.roles[0];
@@ -337,53 +341,55 @@ class _LogInState extends State<LoginScreen> {
                               // }
                             },
                           ),
+                          // SizedBox(
+                          //   child: Center(
+                          //     child: ElevatedButton(
+                          //         onPressed: () {
+                          //           GoRouter.of(context).push("/adminhome");
+                          //         },
+                          //         child: Text("AdminHome")),
+                          //   ),
+                          //   height: 25,
+                          // ),
+                          // SizedBox(
+                          //   height: 25,
+                          //   child: ElevatedButton(
+                          //     onPressed: () {
+                          //       GoRouter.of(context).push('/addproduct');
+                          //     },
+                          //     child: Text("addProduct"),
+                          //   ),
+                          // ),
                           SizedBox(
-                            child: Center(
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    GoRouter.of(context).push("/adminhome");
-                                  },
-                                  child: Text("AdminHome")),
+                            height: 25,
+                          ),
+                          Center(
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "Don\'t_ have_ an_ account? ",
+                                  style: TextStyle(
+                                    color: Color(0xff222222),
+                                    fontSize: 15,
+                                  ),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        text: 'Sign_ up',
+                                        style: TextStyle(
+                                            color: Color(0xff0a6430),
+                                            fontSize: 15),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            context.goNamed(registerRoute);
+                                            // GoRouter.of(context).push('/signup');
+                                            //Navigator.pushNamed(context, '/register');
+                                            // Navigator.push(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) =>
+                                            //             SignUp()));
+                                          })
+                                  ]),
                             ),
-                            height: 25,
-                          ),
-                          SizedBox(
-                            height: 25,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                GoRouter.of(context).push('/addproduct');
-                              },
-                              child: Text("addProduct"),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          RichText(
-                            text: TextSpan(
-                                text: "Don\'t_ have_ an_ account? ",
-                                style: TextStyle(
-                                  color: Color(0xff222222),
-                                  fontSize: 15,
-                                ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                      text: 'Sign_ up',
-                                      style: TextStyle(
-                                          color: Color(0xff0a6430),
-                                          fontSize: 15),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          context.go('/');
-                                          // GoRouter.of(context).push('/signup');
-                                          //Navigator.pushNamed(context, '/register');
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             SignUp()));
-                                        })
-                                ]),
                           ),
                         ],
                       ),

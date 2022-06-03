@@ -12,6 +12,7 @@ import 'package:labpract/application/auth/bloc/auth_bloc.dart';
 import 'package:labpract/application/auth/events/auth_events.dart';
 import 'package:labpract/application/auth/states/auth_state.dart';
 import 'package:labpract/domain/auth/entity/auth_model.dart';
+import 'package:labpract/gloabl/route_name_constants.dart';
 import 'package:labpract/presentation/auth/Login_screen.dart';
 
 class SignUp extends StatefulWidget {
@@ -46,14 +47,13 @@ class _FarmerSignUpState extends State<SignUp> {
           listener: (context, state) {
             if (state is Registering) {
               const CircularProgressIndicator();
+            } else if (state is RegisterError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("error on registrateion")));
             }
-            // else if (state is RegisterError) {
-            //   ScaffoldMessenger.of(context).showSnackBar(
-            //       const SnackBar(content: Text("error on registrateion")));
+            // else if (state is RegisterSuccess) {
+            //   context.goNamed(loginRoute);
             // }
-            else if (state is RegisterSuccess) {
-              GoRouter.of(context).push('login');
-            }
           },
           child: Stack(
             children: [
@@ -165,6 +165,7 @@ class _FarmerSignUpState extends State<SignUp> {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(5),
                                   ),
+
                                   // child: DropdownButton<Locale>(
                                   //   elevation: 2,
                                   //   // value: _language,
@@ -614,7 +615,8 @@ class _FarmerSignUpState extends State<SignUp> {
                             },
                             listener: (context, state) {
                               if (state is RegisterSuccess) {
-                                context.push('/login');
+                                context.goNamed(loginRoute);
+                                // context.push('/login');
                                 // GoRouter.of(context).push('/login');
                                 // print("Succccccessssss");
                                 // Navigator.pushAndRemoveUntil(

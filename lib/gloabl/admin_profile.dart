@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({Key? key}) : super(key: key);
+class AdminProfile extends StatelessWidget {
+  const AdminProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("User profile page"),
+        title: Text("AdminProfile"),
       ),
     );
   }
