@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:labpract/gloabl/admin_profile.dart';
 import 'package:labpract/gloabl/route_name_constants.dart';
 import 'package:labpract/presentation/announcement/announce_admin.dart';
-import 'package:labpract/presentation/products/screens/add_product.dart';
+// import 'package:labpract/presentation/products/screens/add_product.dart';
 import 'package:labpract/presentation/products/screens/product_view.dart';
 // import 'package:labpract/presentation/products/screens/announcement_admin.dart';
 
@@ -29,7 +29,7 @@ class AdminHomeState extends State<AdminHome> {
               },
               child: Text("addProduct"),
             ),
-          )
+          ) // ), Center(child: Eleva,)
         ],
       ),
       bottomNavigationBar: BottomNavBar(),

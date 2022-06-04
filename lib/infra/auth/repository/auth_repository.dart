@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 // import 'package:labpract/application/auth/events/auth_events.dart';
 import 'package:labpract/domain/auth/entity/auth_model.dart';
 import 'package:labpract/domain/auth/validation/invalid_validation.dart';
+import 'package:labpract/infra/auth/repository/user_crud.dart';
 // import 'package:labpract/infra/auth/data_provider/auth_provider.dart';
 // import 'package:labpract/domain/auth/entity/auth_model.dart';
 // import 'package:labpract/domain/auth/validation/invalid_validation.dart';
@@ -86,6 +87,21 @@ class AuthRepository {
     // final response = await authDataProvider.registerUser(register);
     // return response;
   }
+
+  final userdb = UserDB();
+  Future<void> saveToken({required User user}) async {
+    // write token with the user to the database
+    await userdb.createUser(user);
+  }
+
+  // Future<void> deleteToken({required St id}) async {
+  //   await userdb.deleteUser(id);
+  // }
+
+  // Future<bool> hasToken() async {
+  //   bool result = await userdb.checkUser(0);
+  //   return result;
+  // }
 
   // static Future<bool> saveUserLocally(User user) async {
   //   try {

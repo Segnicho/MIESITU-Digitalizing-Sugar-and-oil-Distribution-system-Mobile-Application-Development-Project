@@ -1,21 +1,29 @@
 import 'package:labpract/domain/auth/entity/auth_model.dart';
 import 'package:labpract/infra/auth_local_storage.dart';
 
-class UserDao {
-  final dbProvider = UserDBProvider.usrProvider;
+class UserDB {
+  static final dbProvider = UserDBProvider.usrProvider;
 
   Future<int> createUser(User user) async {
     final db = await dbProvider.database;
-
-    var result = db.insert(userTable, user.toDBjson());
-    return result;
+    var usr = db.insert(userTable, user.toDBjson());
+    return usr;
   }
 
   Future<int> deleteUser(int id) async {
     final db = await dbProvider.database;
-    var result = await db.delete(userTable, where: "id = ?", whereArgs: [id]);
+    var result =
+        await db.delete(userTable, where: "id = ?", whereArgs: [id]);
     return result;
   }
+  
+  // Future<void> update(int id) async {
+  //   final db = await dbProvider.database;
+  //   var result =
+  //       await db.update(userTable, where: "id = ?", whereArgs: [id]);
+
+  // }
+
 
   Future<bool> checkUser(int id) async {
     final db = await dbProvider.database;

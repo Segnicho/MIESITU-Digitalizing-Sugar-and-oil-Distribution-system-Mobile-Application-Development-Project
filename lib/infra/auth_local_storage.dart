@@ -12,7 +12,8 @@ class UserDBProvider {
 
   void initDB(Database database, int version) async {
     await database.execute("CREATE TABLE $userTable ("
-        "email TEXT PRIMARY KEY, "
+        "id int PRIMARY KEY, "
+        "email TEXT , "
         "username TEXT, "
         "accesstoken TEXT ,"
         "first_name TEXT,"
@@ -35,7 +36,6 @@ class UserDBProvider {
 
     var database = await openDatabase(
       path,
-      version: 1,
       onCreate: initDB,
     );
     return database;

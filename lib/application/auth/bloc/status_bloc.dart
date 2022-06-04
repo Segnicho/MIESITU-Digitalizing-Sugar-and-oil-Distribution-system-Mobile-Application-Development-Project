@@ -1,30 +1,31 @@
 // import 'dart:async';
 
 // import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:labpract/application/auth/events/auth_events.dart';
 
 // import 'package:labpract/application/auth/events/status_events.dart';
+// import 'package:labpract/application/auth/states/auth_state.dart';
 // import 'package:labpract/application/auth/states/status_state.dart';
 // import 'package:labpract/domain/auth/entity/auth_model.dart';
 // import 'package:labpract/infra/auth/repository/auth_repository.dart';
+// import 'package:labpract/infra/auth/repository/user_crud.dart';
 
 // class CurrentStatusBloc extends Bloc<CurrentStatusEvent, CurrentStatusState> {
 //   final AuthRepository authRepository;
-//   CurrentStatusBloc(this.authRepository) : super(AppInitState());
+//   final UserDB userdb;
 
-//   Stream<CurrentStatusState> mapEventToState(CurrentStatusEvent event) async* {
-//     if (event is CheckAuthenticationEvent) {
-//       try {
-//         // final user = await authRepository.checkUser();
-//         // if (user.isEmpty) {
-//           // yield UnAuthenticatedState();
-//         // } else {
-//           // currentUser = User.fromJson(user);
-//           // print("curent user ${currentUser!.roles}");
-//           yield AuthenticatedState(currentUser!);
+//   CurrentStatusBloc(this.authRepository, this.userdb) : super(AppInitState());
+
+//  @override
+//   on<LogoutEvent>((event, emit)async {
+//       {
+//         // emit(Registering());
+//         bool res = await authRepository.signUp(event.register);
+//         print(res);
+//         if (res) {
+//           emit(RegisterSuccess());
+//         } else if (res == false) {
+//           emit(RegisterError("error bea"));
 //         }
-//       } catch (e) {
-//         print("error");
-//       }
-//     }
-//   }
+//       }});
 // }
