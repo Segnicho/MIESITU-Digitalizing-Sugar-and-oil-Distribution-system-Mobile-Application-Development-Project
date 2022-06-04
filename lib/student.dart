@@ -26,7 +26,6 @@ class Student {
           //   "announcement_body":
           //       "upppppppdateeeeeecnsdkjfn,Sibsebaw lay as soon as possible tegegnu."
           // }
-
           body: data);
       print(response.statusCode);
 

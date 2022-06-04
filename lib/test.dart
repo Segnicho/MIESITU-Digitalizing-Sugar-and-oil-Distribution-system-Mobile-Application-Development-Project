@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:flutter/material.dart';
 import 'package:labpract/student.dart';
 
@@ -35,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Faaaaaccko"),
+          title: const Text("Faaaaaccko"),
         ),
         body: Container(
           child: FutureBuilder<List>(
@@ -55,15 +57,15 @@ class _MyHomePageState extends State<MyHomePage> {
                             leading: Text(snapshot.data![i]['user_name']),
                             title: Text(
                               snapshot.data![i]['email'],
-                              style: TextStyle(fontSize: 30.0),
+                              style: const TextStyle(fontSize: 30.0),
                             ),
                             subtitle: Text(
                               snapshot.data![i]['first_name'],
-                              style: TextStyle(fontSize: 30.0),
+                              style: const TextStyle(fontSize: 30.0),
                             ),
                             trailing: Text(
                               snapshot.data![i]['last_name'],
-                              style: TextStyle(fontSize: 30.0),
+                              style: const TextStyle(fontSize: 30.0),
                             ),
                           ),
                         );
