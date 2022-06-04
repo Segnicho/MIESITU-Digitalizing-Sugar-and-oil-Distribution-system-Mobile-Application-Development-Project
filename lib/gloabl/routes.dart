@@ -45,16 +45,16 @@ class MiesituRouter {
             pageBuilder: (context, state) =>
                 MaterialPage<void>(child: UserHome()),
             routes: <GoRoute>[
-              GoRoute(
-                  name: userAnnouncement,
-                  path: 'userannouncement',
-                  pageBuilder: (context, state) =>
-                      const MaterialPage<void>(child: UserAnnouncementPage())),
-              GoRoute(
-                  name: userProfile,
-                  path: 'userprofile',
-                  pageBuilder: (context, state) =>
-                      const MaterialPage<void>(child: UserProfilePage()))
+              // GoRoute(
+              //     name: userAnnouncement,
+              //     path: 'userannouncement',
+              //     pageBuilder: (context, state) =>
+              //         const MaterialPage<void>(child: UserAnnouncementPage())),
+              // GoRoute(
+              //     name: userProfile,
+              //     path: 'userprofile',
+              //     pageBuilder: (context, state) =>
+              //         const MaterialPage<void>(child: UserProfilePage()))
             ]),
 
         // GoRoute(
