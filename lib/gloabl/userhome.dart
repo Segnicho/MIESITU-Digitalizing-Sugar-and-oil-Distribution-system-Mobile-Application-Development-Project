@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:labpract/application/auth/bloc/auth_bloc.dart';
+import 'package:labpract/application/auth/events/auth_events.dart';
 
 class UserHome extends StatefulWidget {
   UserHome({Key? key}) : super(key: key);
@@ -13,8 +16,18 @@ class _UserHomeState extends State<UserHome> {
     return Scaffold(
 
         // appBar: AppBar(title: Text("User Home welcome")),
-        body: Center(
-      child: Text("Userhome"),
-    ));
+
+        body: ListView(children: [
+      ElevatedButton(
+          onPressed: () {
+            BlocProvider.of<AuthBloc>(context).add(LogoutEvent());
+          },
+          child: const Text("Logout"))
+    ])
+
+        // bottomNavigationBar: BottomNavigationBar(items:
+        // ]),
+
+        );
   }
 }

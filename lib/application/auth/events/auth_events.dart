@@ -11,8 +11,10 @@ class LoginEvent extends AuthEvent {
 }
 
 class LogoutEvent extends AuthEvent {
-  final logout;
-  LogoutEvent({required this.logout});
+  // final logout;
+  LogoutEvent(
+      // {required this.logout}
+      );
 }
 
 class RegisterEvent extends AuthEvent {

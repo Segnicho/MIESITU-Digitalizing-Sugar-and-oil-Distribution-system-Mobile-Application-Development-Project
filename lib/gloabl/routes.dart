@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labpract/application/auth/bloc/auth_bloc.dart';
+// import 'package:labpract/application/auth/bloc/auth_bloc.dart';
 import 'package:labpract/application/auth/states/auth_state.dart';
-import 'package:labpract/domain/announcement/announcement_model.dart';
-import 'package:labpract/domain/poducts/models/product.dart';
+// import 'package:labpract/domain/announcement/announcement_model.dart';
+// import 'package:labpract/domain/poducts/models/product.dart';
 import 'package:labpract/gloabl/admin_profile.dart';
 import 'package:labpract/gloabl/route_name_constants.dart';
 import 'package:labpract/gloabl/user_profile.dart';
@@ -12,9 +12,9 @@ import 'package:labpract/presentation/announcement/announce_admin.dart';
 import 'package:labpract/presentation/announcement/user_announcement.dart';
 import 'package:labpract/presentation/auth/Login_screen.dart';
 import 'package:labpract/presentation/auth/sign_up_page.dart';
-import 'package:labpract/presentation/products/screens/add_product.dart';
+// import 'package:labpract/presentation/products/screens/add_product.dart';
 import 'package:labpract/presentation/products/screens/product_view.dart';
-import 'package:labpract/presentation/products/screens/screens.dart';
+// import 'package:labpract/presentation/products/screens/screens.dart';
 import 'package:labpract/gloabl/userhome.dart';
 
 class MiesituRouter {
@@ -52,11 +52,11 @@ class MiesituRouter {
                   path: 'userannouncement',
                   pageBuilder: (context, state) =>
                       const MaterialPage<void>(child: UserAnnouncementPage())),
-              GoRoute(
-                  name: userProduct,
-                  path: 'userProduct',
-                  pageBuilder: (context, state) =>
-                      const MaterialPage<void>(child: ProductListScreen())),
+              // GoRoute(
+              //     name: userProduct,
+              //     path: 'userProduct',
+              //     pageBuilder: (context, state) =>
+              //         const MaterialPage<void>(child: ProductListScreen())),
               GoRoute(
                   name: userProfile,
                   path: 'userprofile',
@@ -94,12 +94,12 @@ class MiesituRouter {
                 pageBuilder: (context, state) =>
                     const MaterialPage<void>(child: AdminProduct()),
               ),
-              GoRoute(
-                name: adminProductList,
-                path: 'adminProductList',
-                pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: AddProduct()),
-              ),
+              // GoRoute(
+              //   name: adminProductList,
+              //   path: 'adminProductList',
+              //   pageBuilder: (context, state) =>
+              //       const MaterialPage<void>(child: AddProduct()),
+              // ),
               // GoRoute(
               //   name: adminProduct,
               //   path: 'adminProduct',

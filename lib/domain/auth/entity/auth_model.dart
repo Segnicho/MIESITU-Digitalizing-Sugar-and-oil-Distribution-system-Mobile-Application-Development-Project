@@ -65,6 +65,16 @@ class User extends Authentication {
   final String? lastname;
   final String? refreshtoken;
 
+  Map<String, dynamic> toDBjson() => {
+        "accesstoken": this.accesstoken,
+        "refreshtoken": this.refreshtoken,
+        "firstname": this.firstname,
+        "type": this.type,
+        "lastname": this.lastname,
+        "username": this.username,
+        "email": this.email
+      };
+
   User({
     this.type,
     this.token,
@@ -96,14 +106,4 @@ class User extends Authentication {
       password: json["password"],
     );
   }
-
-  Map<String, dynamic> toDBjson() => {
-        "accesstoken": accesstoken,
-        "refreshtoken": refreshtoken,
-        "firstname": firstname,
-        "type": type,
-        "lastname": lastname,
-        "username": username,
-        "email": email
-      };
 }
